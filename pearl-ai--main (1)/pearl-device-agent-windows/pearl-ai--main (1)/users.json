@@ -1,0 +1,26 @@
+{
+    "user@example.com": {
+        "password": "pbkdf2_sha256$310000$680902532a32308837f6788bae650383$fbf0d7ea8e813d4c2b36214a49dbf35074da9480aab99f75128b634d6d472c8f",
+        "name": "Admin"
+    },
+    "taofficial974@gmail.com": {
+        "password": "pbkdf2_sha256$310000$a01e75c5cef121c7a79e9de5e73582b0$a409fedb91633dade80b75054e05c1194d6d88c8c95f77d1b03c5fa3b04561b4",
+        "name": "surya"
+    },
+    "paulmamoni84@gmail.com": {
+        "password": "pbkdf2_sha256$310000$86d8cb6cb69447140083de056d33fa63$8ab9268589aed0895b53122035c9bb68d7524a925c8ebe3bd56bcab26ffada7b",
+        "name": "Swarapradip Paul"
+    },
+    "paulmmamoni84@gmail.com": {
+        "password": "pbkdf2_sha256$310000$d4dccf06fdb541c45fa2ce2919b82e31$3e52244c4a556a366d3e5ee703e4e2db36ce3e23d712186d79b8501243979532",
+        "name": "jdsj"
+    },
+    "paulmamoni841@gmail.com": {
+        "password": "pbkdf2_sha256$310000$7ea592115b5ceff5fdfea5e792774cfc$e4cb3bdd8e524b4bb7e0e9b393d68d0d42e5ee70497a39e976fc846160a28e95",
+        "name": "rony"
+    },
+    "jnhuj52@gmail.com": {
+        "password": "pbkdf2_sha256$310000$c0727d3550730b55e6dbf7b9d8374b82$94145ccf1f54c21109fede59c064cb621d930747faf905d75d68fa1dbd81389c",
+        "name": "ghg"
+    }
+}

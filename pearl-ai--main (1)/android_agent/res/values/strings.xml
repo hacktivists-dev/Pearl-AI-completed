@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pearl AI Agent</string>
+    <string name="accessibility_service_name">Pearl AI Device Control</string>
+    <string name="accessibility_description">Allows Pearl AI Agent to type into the focused field, perform Android navigation actions, and capture screenshots only after you approve device jobs.</string>
+</resources>

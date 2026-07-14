@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#f8faff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Login | PearlAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --app-height: 100dvh; }
+        * { box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; margin: 0; }
+        body {
+            height: var(--app-height);
+            font-family: 'Inter', sans-serif;
+            background-color: #f8faff;
+            overflow: auto;
+            overscroll-behavior: none;
+            -webkit-overflow-scrolling: touch;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            padding-top: max(1rem, env(safe-area-inset-top));
+            padding-right: max(1rem, env(safe-area-inset-right));
+            padding-bottom: max(1rem, env(safe-area-inset-bottom));
+            padding-left: max(1rem, env(safe-area-inset-left));
+        }
+        input, button { min-height: 44px; touch-action: manipulation; }
+        input { font-size: 16px; }
+        .pearl-logo {
+            background: linear-gradient(135deg, #2563eb 0%, #9333ea 50%, #db2777 100%);
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        #login-card {
+            max-height: calc(var(--app-height) - max(2rem, env(safe-area-inset-top)) - max(2rem, env(safe-area-inset-bottom)));
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        @media (max-width: 480px) {
+            body { align-items: flex-start; }
+            #login-card {
+                margin: auto 0;
+                padding: 1.5rem;
+                border-radius: 1.5rem;
+            }
+            #login-card .pearl-logo {
+                width: 3.25rem;
+                height: 3.25rem;
+                margin-bottom: 1rem;
+            }
+            #login-card h1 { font-size: 1.65rem; }
+            #login-card h1 + p { margin-bottom: 1.5rem; }
+        }
+        @media (orientation: landscape) and (max-height: 520px) {
+            body { align-items: flex-start; }
+            #login-card { margin: 0 auto; padding: 1.25rem; }
+            #login-card .pearl-logo { display: none; }
+            #login-card h1 { font-size: 1.35rem; }
+            #login-card h1 + p { margin-bottom: 1rem; }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center">
+    <div id="login-card" class="max-w-md w-full glass-card p-10 rounded-[32px] shadow-2xl shadow-indigo-100/50 text-center">
+        <div class="w-16 h-16 pearl-logo rounded-full mx-auto mb-6 flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-8 h-8 text-white"></i>
+        </div>
+        
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">Welcome Back</h1>
+        <p class="text-slate-500 mb-8">Enter your details to access PearlAI</p>
+
+        <form id="login-form" class="space-y-4">
+            <div id="name-field-container" class="relative text-left hidden">
+                <label class="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1 mb-2 block">Your Name</label>
+                <input 
+                    type="text" 
+                    id="login-name" 
+                    placeholder="Enter your name" 
+                    class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 ring-indigo-500/20 outline-none transition-all text-slate-800 font-medium"
+                >
+            </div>
+            
+            <div class="relative text-left">
+                <label class="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1 mb-2 block">Your Email</label>
+                <input 
+                    type="email" 
+                    id="login-email" 
+                    placeholder="Enter your email" 
+                    required
+                    class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 ring-indigo-500/20 outline-none transition-all text-slate-800 font-medium"
+                >
+            </div>
+            
+            <div class="relative text-left">
+                <label class="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1 mb-2 block">Password</label>
+                <div class="relative">
+                    <input 
+                        type="password" 
+                        id="login-password" 
+                        placeholder="••••••••" 
+                        required
+                        class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 ring-indigo-500/20 outline-none transition-all text-slate-800 font-medium pr-14"
+                    >
+                    <button type="button" id="toggle-password" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none">
+                        <i data-lucide="eye" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button 
+                type="submit" 
+                class="w-full bg-slate-900 text-white font-semibold py-4 rounded-2xl hover:bg-slate-800 transition-all shadow-lg shadow-slate-200"
+            >
+                Get Started
+            </button>
+        </form>
+
+        <div class="mt-6 text-sm text-center">
+            <a href="#" id="toggle-mode" class="text-slate-500 hover:text-indigo-600 transition-colors">Don't have an account? <span class="font-semibold text-indigo-600">Create one</span></a>
+        </div>
+
+        <p class="text-[10px] text-slate-400 mt-8 uppercase tracking-widest font-medium">
+            Intelligence Evolved &bull; PearlAI
+        </p>
+    </div>
+
+    <script>
+        function syncLoginViewport() {
+            const viewportHeight = window.visualViewport?.height || window.innerHeight;
+            document.documentElement.style.setProperty('--app-height', `${Math.round(viewportHeight)}px`);
+        }
+
+        syncLoginViewport();
+        window.addEventListener('resize', syncLoginViewport);
+        window.addEventListener('orientationchange', syncLoginViewport);
+        window.visualViewport?.addEventListener('resize', syncLoginViewport);
+        window.visualViewport?.addEventListener('scroll', syncLoginViewport);
+
+        lucide.createIcons();
+        
+        const form = document.getElementById('login-form');
+        const nameInput = document.getElementById('login-name');
+        const emailInput = document.getElementById('login-email');
+        const passwordInput = document.getElementById('login-password');
+        const togglePasswordBtn = document.getElementById('toggle-password');
+        const toggleModeBtn = document.getElementById('toggle-mode');
+        const nameFieldContainer = document.getElementById('name-field-container');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const title = document.querySelector('h1');
+        const subtitle = document.querySelector('p');
+        let isLogin = true;
+
+        toggleModeBtn.onclick = (e) => {
+            e.preventDefault();
+            isLogin = !isLogin;
+            nameFieldContainer.classList.toggle('hidden', isLogin);
+            nameInput.required = !isLogin;
+            title.textContent = isLogin ? 'Welcome Back' : 'Create Account';
+            subtitle.textContent = isLogin ? 'Enter your details to access PearlAI' : 'Join our community of intelligence';
+            submitBtn.textContent = isLogin ? 'Get Started' : 'Register Now';
+            toggleModeBtn.innerHTML = isLogin ? 'Don\'t have an account? <span class="font-semibold text-indigo-600">Create one</span>' : 'Already have an account? <span class="font-semibold text-indigo-600">Login</span>';
+        };
+
+        togglePasswordBtn.onclick = () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            const icon = togglePasswordBtn.querySelector('i');
+            icon.setAttribute('data-lucide', isPassword ? 'eye-off' : 'eye');
+            lucide.createIcons();
+        };
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            const endpoint = isLogin ? '/api/login' : '/api/register';
+            
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+                
+                const result = await response.json().catch(() => ({}));
+                if (!response.ok) {
+                    throw new Error(result.detail || result.message || `Server returned ${response.status}`);
+                }
+                
+                if (result.status === "success") {
+                    if (isLogin) {
+                        localStorage.setItem('pearl_session_active', 'true');
+                        localStorage.setItem('pearl_user_name', result.user.name);
+                        localStorage.setItem('pearl_user_email', result.user.email);
+                        window.location.href = '/';
+                    } else {
+                        alert("Registration successful! Please login.");
+                        toggleModeBtn.click(); // Switch back to login mode
+                    }
+                } else {
+                    // Check for our custom message or FastAPI's default 'detail'
+                    const errorMsg = result.message || (result.detail ? JSON.stringify(result.detail) : "Unknown error");
+                    alert(isLogin ? "Login Failed: " + errorMsg : "Registration Failed: " + errorMsg);
+                }
+            } catch (err) {
+                console.error(err);
+                alert(err.message || "Connection error. Please try again.");
+            }
+        };
+    </script>
+</body>
+</html>
